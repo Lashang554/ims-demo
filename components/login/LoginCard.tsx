@@ -23,7 +23,7 @@ export function LoginCard() {
   }
 
   return (
-    <div className="w-full max-w-[400px] rounded-2xl border border-gray-200 bg-white p-8 shadow-lg">
+    <div className="w-full max-w-[700px] rounded-2xl border border-gray-200 bg-blue-50 p-8 shadow-lg">
       {/* Logo */}
       <div className="mb-6 flex flex-col items-center">
         <div className="relative h-16 w-16 overflow-hidden rounded-full">
@@ -36,7 +36,7 @@ export function LoginCard() {
             priority
           />
         </div>
-        <h1 className="mt-4 text-center text-lg font-semibold text-gray-900">
+        <h1 className="mt-4 text-center text-lg font-semibold text-blue-600">
           Inventory Management System
         </h1>
         <p className="mt-2 text-center text-sm text-gray-500">
