@@ -30,13 +30,7 @@ export function DashboardHeader({
           >
             🔔
           </button>
-          {/* <button
-            type="button"
-            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-            aria-label="Messages"
-          >
-            💬
-          </button> */}
+          
         </div>
         <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 pl-2 pr-3 py-2">
           <div className="h-9 w-9 rounded-full bg-blue-100 flex items-center justify-center text-sm font-medium text-blue-700">
