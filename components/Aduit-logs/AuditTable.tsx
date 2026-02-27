@@ -1,6 +1,6 @@
 "use client";
 
-import { SlidersHorizontal,Upload } from "lucide-react";
+import { SlidersHorizontal, Upload, Paperclip } from "lucide-react";
 import { TablePagination } from "@/components/ui/TablePagination";
 
 const historyData = [
@@ -11,6 +11,7 @@ const historyData = [
     balance: 34,
     by: "Rajesh Shrestha",
     remarks: "Received from Province",
+    invoice: true,
   },
   {
     date: "21 Jan 2026",
@@ -19,6 +20,7 @@ const historyData = [
     balance: 14,
     by: "Panchaj Yadav",
     remarks: "Issued to Ward 12",
+    invoice: true,
   },
   {
     date: "19 Jan 2026",
@@ -27,6 +29,7 @@ const historyData = [
     balance: 15,
     by: "Sunil Thapa",
     remarks: "Damaged in transit",
+    invoice: true,
   },
   {
     date: "18 Jan 2026",
@@ -35,10 +38,11 @@ const historyData = [
     balance: 20,
     by: "Madhav Chaudhary",
     remarks: "Replenishment",
+    invoice: true,
   },
 ];
 
-export function StockHistoryTable() {
+export function AuditTable() {
   return (
     <div className="bg-white rounded-xl h-[555px] flex flex-col mt-6">
       {/* Header */}
@@ -58,25 +62,20 @@ export function StockHistoryTable() {
           />
         </div>
 
-         <div className="flex items-center gap-3">
-  {/* Filter button */}
-  <button className="flex items-center gap-2 rounded-lg bg-gray-50 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-    <SlidersHorizontal className="h-4 w-4" />
-    Filter
-  </button>
+        <div className="flex items-center gap-3">
+          <button className="flex items-center gap-2 rounded-lg bg-gray-50 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <SlidersHorizontal className="h-4 w-4" />
+            Filter
+          </button>
 
-  {/* Upload icon button */}
-  <button
-    title="Upload File"
-    className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-  >
-    <Upload className="h-4 w-4" />
-  </button>
-</div>
+          <button className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+            <Upload className="h-4 w-4" />
+          </button>
+        </div>
       </div>
 
       {/* Table */}
-      <div className="px-6 h-[380px]">
+      <div className="px-6 h-[380px] overflow-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-gray-50 text-gray-500">
@@ -90,18 +89,34 @@ export function StockHistoryTable() {
                 Performed By
               </th>
               <th className="px-4 py-3 text-left font-medium">Remarks</th>
+              <th className="px-4 py-3 text-left font-medium">
+                Attachments
+              </th>
             </tr>
           </thead>
 
           <tbody>
             {historyData.map((row, i) => (
-              <tr key={i} className="border-b border-gray-100 hover:bg-gray-50">
+              <tr
+                key={i}
+                className="border-b border-gray-100 hover:bg-gray-50"
+              >
                 <td className="px-4 py-3 text-gray-600">{row.date}</td>
                 <td className="px-4 py-3 text-gray-600">{row.action}</td>
                 <td className="px-4 py-3 text-gray-600">{row.qty}</td>
                 <td className="px-4 py-3 text-gray-600">{row.balance}</td>
                 <td className="px-4 py-3 text-gray-600">{row.by}</td>
                 <td className="px-4 py-3 text-gray-600">{row.remarks}</td>
+                <td className="px-4 py-3">
+                  {row.invoice && (
+                    <button
+                      title="View Invoice"
+                      className="text-gray-500 hover:text-blue-600"
+                    >
+                      <Paperclip className="h-4 w-4" />
+                    </button>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
